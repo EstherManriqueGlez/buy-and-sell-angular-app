@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fakeListings } from '../fake-data';
+import { fakeMyListings } from '../fake-data';
 import { Listing } from '../types';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -17,10 +17,10 @@ export class MyListingsPageComponent implements OnInit{
   constructor() {}
 
   ngOnInit(): void {
-    this.listings = fakeListings;
+    this.listings = fakeMyListings;
   }
 
-  onDeleteClicked(listingId: string): void {
+  onDeleteClicked(listingId: string | null): void {
     alert(`Deleting your listing with id ${listingId}`);
   }
 
