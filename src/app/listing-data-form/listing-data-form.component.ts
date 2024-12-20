@@ -38,6 +38,7 @@ price: number = 0;
       name: this.name,
       description: this.description,
       price: Number(this.price),
+      views: 0
     })
 
   }
