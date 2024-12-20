@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Injectable, OnInit } from '@angular/core';
 import { Listing } from '../types';
-import { fakeListings } from '../fake-data';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ListingsService } from '../listings.service';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-listings-page',
   standalone: true,
@@ -14,8 +17,11 @@ import { RouterLink } from '@angular/router';
 export class ListingsPageComponent implements OnInit {
   listings: Listing[] = [];
 
+  constructor(private listingsService: ListingsService) {}
 
   ngOnInit(): void {
-    this.listings = fakeListings;
+    this.listingsService
+      .getListings()
+      .subscribe((listings) => (this.listings = listings));
   }
 }
